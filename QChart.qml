@@ -41,24 +41,25 @@ Canvas {
          the surface with an updated window size */
         ctx.reset()
 
+        var _chart = new Charts.Chart(canvas, ctx)
         switch(chartType) {
         case Charts.ChartType.BAR:
-            chart = new Charts.Chart(canvas, ctx).Bar(chartData, chartOptions);
+            chart = new _chart.Bar(chartData, chartOptions);
             break;
         case Charts.ChartType.DOUGHNUT:
-            chart = new Charts.Chart(canvas, ctx).Doughnut(chartData, chartOptions);
+            chart = new _chart.Doughnut(chartData, chartOptions);
             break;
         case Charts.ChartType.LINE:
-            chart = new Charts.Chart(canvas, ctx).Line(chartData, chartOptions);
+            chart = new _chart.Line(chartData, chartOptions);
             break;
         case Charts.ChartType.PIE:
-            chart = new Charts.Chart(canvas, ctx).Pie(chartData, chartOptions);
+            chart = new _chart.Pie(chartData, chartOptions);
             break;
         case Charts.ChartType.POLAR:
-            chart = new Charts.Chart(canvas, ctx).PolarArea(chartData, chartOptions);
+            chart = new _chart.PolarArea(chartData, chartOptions);
             break;
         case Charts.ChartType.RADAR:
-            chart = new Charts.Chart(canvas, ctx).Radar(chartData, chartOptions);
+            chart = new _chart.Radar(chartData, chartOptions);
             break;
         default:
             console.log('Chart type should be specified.');
