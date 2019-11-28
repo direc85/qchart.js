@@ -19,5 +19,12 @@ target.files += QChart.* qmldir
 
 INSTALLS += target
 
+OTHER_FILES += \
+    QChart.js \
+    QChart.qml \
+    QChartGallery.js \
+    QChartGallery.qml \
+    qmldir
+
 ######################################################################
 ### qchart.js.pro ends here
