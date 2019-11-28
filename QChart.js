@@ -13,21 +13,21 @@
 //
 
 var ChartType = {
-         BAR: 1,
+    BAR: 1,
     DOUGHNUT: 2,
-        LINE: 3,
-         PIE: 4,
-       POLAR: 5,
-       RADAR: 6
+    LINE: 3,
+    PIE: 4,
+    POLAR: 5,
+    RADAR: 6
 };
 
 var Chart = function(canvas, context) {
 
     var chart = this;
 
-// /////////////////////////////////////////////////////////////////
-// Polar area helper
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Polar area helper
+    // /////////////////////////////////////////////////////////////////
 
     this.PolarArea = function(data, options) {
 
@@ -66,9 +66,9 @@ var Chart = function(canvas, context) {
         return new PolarArea(data,config,context);
     };
 
-// /////////////////////////////////////////////////////////////////
-// Radar helper
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Radar helper
+    // /////////////////////////////////////////////////////////////////
 
     this.Radar = function(data,options) {
 
@@ -115,9 +115,9 @@ var Chart = function(canvas, context) {
         return new Radar(data,config,context);
     };
 
-// /////////////////////////////////////////////////////////////////
-// Pie helper
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Pie helper
+    // /////////////////////////////////////////////////////////////////
 
     this.Pie = function(data,options) {
 
@@ -138,9 +138,9 @@ var Chart = function(canvas, context) {
         return new Pie(data,config,context);
     };
 
-// /////////////////////////////////////////////////////////////////
-// Doughnut helper
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Doughnut helper
+    // /////////////////////////////////////////////////////////////////
 
     this.Doughnut = function(data,options) {
 
@@ -163,9 +163,9 @@ var Chart = function(canvas, context) {
 
     };
 
-// /////////////////////////////////////////////////////////////////
-// Line helper
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Line helper
+    // /////////////////////////////////////////////////////////////////
 
     this.Line = function(data,options) {
 
@@ -204,9 +204,9 @@ var Chart = function(canvas, context) {
         return new Line(data,config,context);
     }
 
-// /////////////////////////////////////////////////////////////////
-// Bar helper
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Bar helper
+    // /////////////////////////////////////////////////////////////////
 
     this.Bar = function(data,options) {
 
@@ -242,9 +242,9 @@ var Chart = function(canvas, context) {
         return new Bar(data,config,context);
     }
 
-// /////////////////////////////////////////////////////////////////
-// Polar Area implementation
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Polar Area implementation
+    // /////////////////////////////////////////////////////////////////
 
     var PolarArea = function(data,config,ctx) {
 
@@ -342,11 +342,11 @@ var Chart = function(canvas, context) {
                         ctx.fillStyle = config.scaleBackdropColor;
                         ctx.beginPath();
                         ctx.rect(
-                            Math.round(width/2 - textWidth/2 - config.scaleBackdropPaddingX),
-                            Math.round(height/2 - (scaleHop * (i + 1)) - config.scaleFontSize*0.5 - config.scaleBackdropPaddingY),
-                            Math.round(textWidth + (config.scaleBackdropPaddingX*2)),
-                            Math.round(config.scaleFontSize + (config.scaleBackdropPaddingY*2))
-                        );
+                                    Math.round(width/2 - textWidth/2 - config.scaleBackdropPaddingX),
+                                    Math.round(height/2 - (scaleHop * (i + 1)) - config.scaleFontSize*0.5 - config.scaleBackdropPaddingY),
+                                    Math.round(textWidth + (config.scaleBackdropPaddingX*2)),
+                                    Math.round(config.scaleFontSize + (config.scaleBackdropPaddingY*2))
+                                    );
                         ctx.fill();
                     }
                     ctx.textBaseline = "middle";
@@ -413,9 +413,9 @@ var Chart = function(canvas, context) {
         }
     }
 
-// /////////////////////////////////////////////////////////////////
-// Radar implementation
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Radar implementation
+    // /////////////////////////////////////////////////////////////////
 
     var Radar = function (data, config, ctx) {
 
@@ -557,11 +557,11 @@ var Chart = function(canvas, context) {
                         ctx.fillStyle = config.scaleBackdropColor;
                         ctx.beginPath();
                         ctx.rect(
-                            Math.round(- textWidth/2 - config.scaleBackdropPaddingX),     //X
-                            Math.round((-scaleHop * (i + 1)) - config.scaleFontSize*0.5 - config.scaleBackdropPaddingY),//Y
-                            Math.round(textWidth + (config.scaleBackdropPaddingX*2)), //Width
-                            Math.round(config.scaleFontSize + (config.scaleBackdropPaddingY*2)) //Height
-                        );
+                                    Math.round(- textWidth/2 - config.scaleBackdropPaddingX),     //X
+                                    Math.round((-scaleHop * (i + 1)) - config.scaleFontSize*0.5 - config.scaleBackdropPaddingY),//Y
+                                    Math.round(textWidth + (config.scaleBackdropPaddingX*2)), //Width
+                                    Math.round(config.scaleFontSize + (config.scaleBackdropPaddingY*2)) //Height
+                                    );
                         ctx.fill();
                     }
                     ctx.fillStyle = config.scaleFontColor;
@@ -635,9 +635,9 @@ var Chart = function(canvas, context) {
         }
     }
 
-// /////////////////////////////////////////////////////////////////
-// Pie implementation
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Pie implementation
+    // /////////////////////////////////////////////////////////////////
 
     var Pie = function(data,config,ctx) {
 
@@ -703,9 +703,9 @@ var Chart = function(canvas, context) {
         }
     }
 
-// /////////////////////////////////////////////////////////////////
-// Doughnut implementation
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Doughnut implementation
+    // /////////////////////////////////////////////////////////////////
 
     var Doughnut = function(data,config,ctx) {
 
@@ -772,9 +772,9 @@ var Chart = function(canvas, context) {
         }
     }
 
-// /////////////////////////////////////////////////////////////////
-// Line implementation
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Line implementation
+    // /////////////////////////////////////////////////////////////////
 
     var Line = function(data,config,ctx) {
 
@@ -1040,9 +1040,9 @@ var Chart = function(canvas, context) {
         }
     }
 
-// /////////////////////////////////////////////////////////////////
-// Bar implementation
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Bar implementation
+    // /////////////////////////////////////////////////////////////////
 
     var Bar = function(data, config, ctx) {
 
@@ -1283,9 +1283,9 @@ var Chart = function(canvas, context) {
         }
     }
 
-// /////////////////////////////////////////////////////////////////
-// Helper functions
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Helper functions
+    // /////////////////////////////////////////////////////////////////
 
     var clear = function(c) {
         c.clearRect(0, 0, width, height);
@@ -1401,21 +1401,21 @@ var Chart = function(canvas, context) {
 
     function tmpl(str, data) {
         var fn = !/\W/.test(str) ?
-            cache[str] = cache[str] ||
-            tmpl(document.getElementById(str).innerHTML) :
+                    cache[str] = cache[str] ||
+                    tmpl(document.getElementById(str).innerHTML) :
 
-        new Function("obj",
-                     "var p=[],print=function() {p.push.apply(p,arguments);};" +
-                     "with(obj) {p.push('" +
-                     str
-                     .replace(/[\r\t\n]/g, " ")
-                     .split("<%").join("\t")
-                     .replace(/((^|%>)[^\t]*)'/g, "$1\r")
-                     .replace(/\t=(.*?)%>/g, "',$1,'")
-                     .split("\t").join("');")
-                     .split("%>").join("p.push('")
-                     .split("\r").join("\\'")
-                     + "');}return p.join('');");
+                    new Function("obj",
+                                 "var p=[],print=function() {p.push.apply(p,arguments);};" +
+                                 "with(obj) {p.push('" +
+                                 str
+                                 .replace(/[\r\t\n]/g, " ")
+                                 .split("<%").join("\t")
+                                 .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+                                 .replace(/\t=(.*?)%>/g, "',$1,'")
+                                 .split("\t").join("');")
+                                 .split("%>").join("p.push('")
+                                 .split("\r").join("\\'")
+                                 + "');}return p.join('');");
 
         return data ? fn( data ) : fn;
     };

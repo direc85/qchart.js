@@ -18,102 +18,102 @@ import "QChart.js" as Charts
 
 Canvas {
 
-  id: canvas;
+    id: canvas;
 
-// ///////////////////////////////////////////////////////////////
+    // ///////////////////////////////////////////////////////////////
 
-  property   var chart;
-  property   var chartData;
-  property   int chartType: 0;
-  property  bool chartAnimated: true;
-  property alias chartAnimationEasing: chartAnimator.easing.type;
-  property alias chartAnimationDuration: chartAnimator.duration;
-  property   int chartAnimationProgress: 0;
-  property   var chartOptions: ({})
+    property   var chart;
+    property   var chartData;
+    property   int chartType: 0;
+    property  bool chartAnimated: true;
+    property alias chartAnimationEasing: chartAnimator.easing.type;
+    property alias chartAnimationDuration: chartAnimator.duration;
+    property   int chartAnimationProgress: 0;
+    property   var chartOptions: ({})
 
-// /////////////////////////////////////////////////////////////////
-// Callbacks
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Callbacks
+    // /////////////////////////////////////////////////////////////////
 
-  onPaint: {
-      var ctx = canvas.getContext("2d");
-      /* Reset the canvas context to allow resize events to properly redraw
+    onPaint: {
+        var ctx = canvas.getContext("2d");
+        /* Reset the canvas context to allow resize events to properly redraw
          the surface with an updated window size */
-      ctx.reset()
+        ctx.reset()
 
-      switch(chartType) {
-      case Charts.ChartType.BAR:
-          chart = new Charts.Chart(canvas, ctx).Bar(chartData, chartOptions);
-          break;
-      case Charts.ChartType.DOUGHNUT:
-          chart = new Charts.Chart(canvas, ctx).Doughnut(chartData, chartOptions);
-          break;
-      case Charts.ChartType.LINE:
-          chart = new Charts.Chart(canvas, ctx).Line(chartData, chartOptions);
-          break;
-      case Charts.ChartType.PIE:
-          chart = new Charts.Chart(canvas, ctx).Pie(chartData, chartOptions);
-          break;
-      case Charts.ChartType.POLAR:
-          chart = new Charts.Chart(canvas, ctx).PolarArea(chartData, chartOptions);
-          break;
-      case Charts.ChartType.RADAR:
-          chart = new Charts.Chart(canvas, ctx).Radar(chartData, chartOptions);
-          break;
-      default:
-          console.log('Chart type should be specified.');
-      }
+        switch(chartType) {
+        case Charts.ChartType.BAR:
+            chart = new Charts.Chart(canvas, ctx).Bar(chartData, chartOptions);
+            break;
+        case Charts.ChartType.DOUGHNUT:
+            chart = new Charts.Chart(canvas, ctx).Doughnut(chartData, chartOptions);
+            break;
+        case Charts.ChartType.LINE:
+            chart = new Charts.Chart(canvas, ctx).Line(chartData, chartOptions);
+            break;
+        case Charts.ChartType.PIE:
+            chart = new Charts.Chart(canvas, ctx).Pie(chartData, chartOptions);
+            break;
+        case Charts.ChartType.POLAR:
+            chart = new Charts.Chart(canvas, ctx).PolarArea(chartData, chartOptions);
+            break;
+        case Charts.ChartType.RADAR:
+            chart = new Charts.Chart(canvas, ctx).Radar(chartData, chartOptions);
+            break;
+        default:
+            console.log('Chart type should be specified.');
+        }
 
-      chart.init();
+        chart.init();
 
-      if (chartAnimated)
-          chartAnimator.start();
-      else
-          chartAnimationProgress = 100;
+        if (chartAnimated)
+            chartAnimator.start();
+        else
+            chartAnimationProgress = 100;
 
-      chart.draw(chartAnimationProgress/100);
-  }
+        chart.draw(chartAnimationProgress/100);
+    }
 
-  onHeightChanged: {
-    requestPaint();
-  }
+    onHeightChanged: {
+        requestPaint();
+    }
 
-  onWidthChanged: {
-    requestPaint();
-  }
+    onWidthChanged: {
+        requestPaint();
+    }
 
-  onChartAnimationProgressChanged: {
-      requestPaint();
-  }
+    onChartAnimationProgressChanged: {
+        requestPaint();
+    }
 
-  onChartDataChanged: {
-      requestPaint();
-  }
+    onChartDataChanged: {
+        requestPaint();
+    }
 
-  onVisibleChanged: {
-      if(parent.visible == true)
-          requestPaint();
-  }
+    onVisibleChanged: {
+        if(parent.visible == true)
+            requestPaint();
+    }
 
-// /////////////////////////////////////////////////////////////////
-// Functions
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Functions
+    // /////////////////////////////////////////////////////////////////
 
-  function repaint() {
-      chartAnimationProgress = 0;
-      chartAnimator.start();
-  }
+    function repaint() {
+        chartAnimationProgress = 0;
+        chartAnimator.start();
+    }
 
-// /////////////////////////////////////////////////////////////////
-// Internals
-// /////////////////////////////////////////////////////////////////
+    // /////////////////////////////////////////////////////////////////
+    // Internals
+    // /////////////////////////////////////////////////////////////////
 
-  PropertyAnimation {
-             id: chartAnimator;
-         target: canvas;
-       property: "chartAnimationProgress";
-             to: 100;
-       duration: 500;
-    easing.type: Easing.InOutElastic;
-  }
+    PropertyAnimation {
+        id: chartAnimator;
+        target: canvas;
+        property: "chartAnimationProgress";
+        to: 100;
+        duration: 500;
+        easing.type: Easing.InOutElastic;
+    }
 }
