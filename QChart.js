@@ -1113,7 +1113,8 @@ var Chart = function(canvas, context) {
             ctx.lineWidth = config.barStrokeWidth;
 
             for (var i=0; i<data.datasets.length; i++) {
-                ctx.fillStyle = data.datasets[i].fillColor;
+                if (!Array.isArray(data.datasets[i].fillColor))
+                    ctx.fillStyle = data.datasets[i].fillColor;
                 ctx.strokeStyle = data.datasets[i].strokeColor;
 
                 for (var j=0; j<data.datasets[i].data.length; j++) {
@@ -1129,6 +1130,10 @@ var Chart = function(canvas, context) {
                         ctx.stroke();
                     }
                     ctx.closePath();
+                    if (Array.isArray(data.datasets[i].fillColor)) {
+                        if (j < data.datasets[i].fillColor.length)
+                            ctx.fillStyle = data.datasets[i].fillColor[j];
+                    }
                     ctx.fill();
                 }
             }
